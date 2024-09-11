@@ -2,24 +2,20 @@ from nyx_client.extensions.langchain import NyxLangChain
 from nyx_client.configuration import ConfigProvider, ConfigType
 from langchain_openai import ChatOpenAI
 import os
+import sys
 
-config = ConfigProvider.create_config(ConfigType.OPENAI)
+env_file=os.getenv("GPTSCRIPT_WORKSPACE_DIR", None) 
+if env_file is None:
+    print("you must specify the --workspace flag pointing to a directory where the nyx .env file exists")
+    sys.exit()    
+
+config = ConfigProvider.create_config(env_file=env_file, config_type=ConfigType.OPENAI)
 llm = ChatOpenAI(model_name="gpt-4o-mini", api_key=config.api_key)
 client = NyxLangChain(config=config, llm=llm)
 
-files_path = [os.path.abspath(x) for x in os.listdir()]
+data_name = os.getenv('DATANAME', None)
+
+my_subscriptions = client.get_subscribed_datasets()
 print(f"name, title, content_type, description")
-for f in files_path:
-     print(f"{f}, , , ")    
-
-# data_name = os.getenv('DATANAME', None)
-
-# data_path = "data"
-
-# if not os.path.exists(data_path):
-#     os.makedirs(data_path)
-
-# my_subscriptions = client.get_subscribed_datasets()
-# print(f"name, title, content_type, description")
-# for s in my_subscriptions:
-#     print(f"{s.name}, {s.title}, {s.content_type}, ")
+for s in my_subscriptions:
+    print(f"{s.name}, {s.title}, {s.content_type}, ")
