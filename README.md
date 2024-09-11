@@ -46,4 +46,4 @@ Then:
     - create and activate a python venv
     - run `pip install -r requirements.txt`
     - follow the steps above to create the `.env` file
-    - run `gptscript agent.gpt`    
+    - run `gptscript agent.gpt`
