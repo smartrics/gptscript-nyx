@@ -1,0 +1,6 @@
+print(f"name, title, content_type, description")
+print(f"global_shipping_data, Global Shipping data, csv, Transportation data tracked from several large international haulage firms.")
+print(f"daily_weather_data, Met Éireann - Daily Weather Data, csv, Met Éireann provides daily weather data, including temperature, wind speed, and rainfall, for various locations.")
+print(f"sales_23_24, Global Sales Data, csv, Global sales data of widgets in the EMEA market.")
+print(f"sg_esg_midlands, Stagecoach East Midlands - Environmental Impact Data , csv, Stagecoach East Midlands - Environmental Impact Data.")
+print(f"sg_esg_yorkshire, Stagecoach East Yorkshire - Environmental Impact Data , csv, Stagecoach East Yorkshire - Environmental Impact Data.")

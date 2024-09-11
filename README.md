@@ -1,2 +1,4 @@
 # gptscript-nyx
-example of integration of gptscript and nyx
+
+A gptscript integration to connect to nyx and download files locally
+
