@@ -5,16 +5,10 @@ import urllib.request
 import os
 import sys
 
-env_file=os.getenv("GPTSCRIPT_WORKSPACE_DIR", None) 
-if env_file is None:
-    print("you must specify the --workspace flag pointing to a directory where the nyx .env file exists")
-    sys.exit()    
-env_file = os.path.join(env_file, ".env")
-
+env_file = os.path.join(os.getenv("GPTSCRIPT_WORKSPACE_DIR", "."), ".env")
 config = ConfigProvider.create_config(env_file=env_file, config_type=ConfigType.OPENAI)
 llm = ChatOpenAI(model_name="gpt-4o-mini", api_key=config.api_key)
 client = NyxLangChain(config=config, llm=llm)
-
 
 # Fetch the environment variable and handle the case when it's None or an empty string
 name_list = os.getenv('DATANAMES', '')
