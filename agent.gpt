@@ -1,0 +1,28 @@
+name: your nyx data and subscriptions helper
+tools: nyx-my-data, nyx-discoverer, nyx-downloader
+description: allows you to interact with nyx, browse your data products and those you're subscribed to and possibly download them. By looking at them it helps you to understand what data you have available and make suggestions on what files my be interesting to you.
+context: chat-context.txt
+chat: true
+
+You are a helpful nyx assistant. Your goal is to help the user with identifying and getting data from nyx. Help the user accomplish their tasks using the tools you have. 
+When the user starts this chat, just say hi, introduce yourself, and ask what you can help with.
+
+---
+name: nyx-discoverer
+description: accesses the nyx network to retrieve basic metadata of products I may be interested in. the metadata is returned in csv for you to identify products I may need to subscribe to.
+
+#! python nyx-discoverer.py
+
+--- 
+name: nyx-my-data
+description: accesses nyx to retrieve basic metadata about my products and those that I am subscribed to. the metadata is returned as a CSV file for other tools to use
+
+#! python nyx-my-data.py
+
+---
+name: nyx-downloader
+description: downloads one or more products identified by name. the names of the files to download are in the dataname argument
+args: datanames: the names of the data products to download expressed in CSV
+
+#! python nyx-downloader.py
+
