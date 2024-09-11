@@ -30,5 +30,20 @@ This is a proof of concept to learn GPTScript and make use of Nyx via its SDK.
 
 ## How to run it
 
+Pre-requisites:
 
-    
+- Install [gptscript](https://github.com/gptscript-ai/gptscript)
+- Install Python 3.11 or above.
+
+Then:
+
+1. install the [nyx-client](https://pypi.org/project/nyx-client/) in a local environment and generate the nyx credentials file following the instructions in the "First Time Setup" section.
+    - the credentials file is stored in the `.env` file
+1. run the agent remotely
+    - run `gptscript --workspace . github.com/smartrics/gptscript-nyx` assuming that the `.env` file is in the current directory or adjust the argument of the `--worspace` flag to the directory where the Nyx `.env` file is
+1. run the agent locally
+    - clone `github.com/smartrics/gptscript-nyx`
+    - create and activate a python venv
+    - run `pip install -r requirements.txt`
+    - follow the steps above to create the `.env` file
+    - run `gptscript agent.gpt`    
