@@ -26,7 +26,7 @@ for s in my_subscriptions:
     if s.name in name_list:
         # Build the file path dynamically
         file_name = os.path.join(data_path, f"{s.name}.{s.content_type}")
-        
+
         try:
             # Attempt to download the file
             urllib.request.urlretrieve(s.url, file_name)

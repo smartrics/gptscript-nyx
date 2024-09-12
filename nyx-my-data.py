@@ -1,17 +1,10 @@
-from nyx_client.extensions.langchain import NyxLangChain
 from nyx_client.configuration import ConfigProvider, ConfigType
-from langchain_openai import ChatOpenAI
+from nyx_client import NyxClient
 import os
-import sys
 
 env_file = os.path.join(os.getenv("GPTSCRIPT_WORKSPACE_DIR", "."), ".env")
-config = ConfigProvider.create_config(env_file=env_file, config_type=ConfigType.OPENAI)
-llm = ChatOpenAI(model_name="gpt-4o-mini", api_key=config.api_key)
-client = NyxLangChain(config=config, llm=llm)
-
-config = ConfigProvider.create_config(env_file=env_file, config_type=ConfigType.OPENAI)
-llm = ChatOpenAI(model_name="gpt-4o-mini", api_key=config.api_key)
-client = NyxLangChain(config=config, llm=llm)
+config = ConfigProvider.create_config(env_file=env_file, config_type=ConfigType.BASE)
+client = NyxClient(config=config)
 
 data_name = os.getenv('DATANAME', None)
 
